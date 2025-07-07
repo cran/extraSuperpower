@@ -1,7 +1,7 @@
-423592aef5d39e3904d638c68d664632 *DESCRIPTION
+97cfa2fbb83ac2d2c2086c8e43f43176 *DESCRIPTION
 d055292c7d25f477786604218b6f5bc3 *LICENSE
 3f5b498b41ab0c2b7b941f0b4c3d139a *NAMESPACE
-02b19c7d525aed8e999c6150cc379917 *NEWS.md
+c66b684e1c6ed83700093f3fa78e7771 *NEWS.md
 55a61e5e86bccdf7aeb751a0baf208c5 *R/create_mean_sd_matrices.R
 3928dee23e7237abe62b32beeb84790a *R/data_summary_fplotting.R
 66ccd6307853ad24d535dbe91b0a9bd9 *R/effect_size_calculation.R
@@ -15,12 +15,12 @@ ee65682d940328253bf73031573155f2 *R/independent_twoway_generation.R
 cb44b4ec12f9c7d4ca0b45778840cf6b *R/repeated_twoway_generation.R
 8bad911cace9e540db90c80225d990a8 *R/simulate_over_groupsize.R
 674d3e232bd221c6688e5606fa3bef96 *R/test_overseveraln.R
-a08e91f3e13a514c97c631ce448d3fcc *R/twoway_simultesting.R
+05c61e64e03265251d86ce34d7abccc8 *R/twoway_simultesting.R
 39a9d30b016174984516f40a2c74f3eb *README.md
 54ebc697c39c91b2a633de73d10ade62 *build/vignette.rds
 7fd90f43267fed9a0d37c2284225a022 *inst/doc/eSp_balanced_design_powertest.R
 a00a5a5822be3d0c9a6ccd8410d63bdf *inst/doc/eSp_balanced_design_powertest.Rmd
-6f9d8b9c6521c2cea95f571f0543cb4e *inst/doc/eSp_balanced_design_powertest.html
+486bbd0c569ca1430b4ee5d5c9e2ce25 *inst/doc/eSp_balanced_design_powertest.html
 9d20cfeaefed870d813d14d5bd244d30 *man/calculate_mean_matrix.Rd
 035bd6536fecb1483d01f67dbae7a0c7 *man/effsize.Rd
 17c5495369a24f6825e2670c21b21117 *man/exact_twoway_anova_power.Rd
@@ -46,6 +46,6 @@ ef6c11706fba01218759366d8534f233 *tests/testthat/test-independent_twoway_generat
 2d142f6d3bf6f1dca67a565f652e9e10 *tests/testthat/test-plot_powercurves.R
 81b278876ad49e2622c0eeba8514d9fa *tests/testthat/test-repeated_twoway_generation.R
 6bc172e0c49d93d1466e13c9268290e4 *tests/testthat/test-simulate_twoway_nrange.R
-52323228a7c83781f73e3534765fd97a *tests/testthat/test-test_power_overkn.R
+dc660ab30897864f9b8cd74423c7a100 *tests/testthat/test-test_power_overkn.R
 974cc7a928732985749c91ee582a1ffb *tests/testthat/test-twoway_simulation_testing.R
 a00a5a5822be3d0c9a6ccd8410d63bdf *vignettes/eSp_balanced_design_powertest.Rmd
