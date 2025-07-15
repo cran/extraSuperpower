@@ -7,6 +7,9 @@ knitr::opts_chunk$set(
 ## ----setup, include=FALSE, eval=FALSE-----------------------------------------
 # library(extraSuperpower)
 
+## ----installation, eval=FALSE-------------------------------------------------
+# install.packages('extraSuperpower')
+
 ## ----package loading----------------------------------------------------------
 library(extraSuperpower)
 

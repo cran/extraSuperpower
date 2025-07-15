@@ -15,7 +15,7 @@ calculate_mean_matrix(
   label_list = NULL,
   sdproportional = TRUE,
   sdratio = 0.2,
-  endincrement = FALSE,
+  endincrement = TRUE,
   rho = 0,
   withinf = NULL,
   plot = TRUE
@@ -28,58 +28,61 @@ calculate_mean_matrix(
 
 \item{nlfB}{integer - number of levels of factor B}
 
-\item{fAeffect}{Numeric - multiple by which the refmean is modified when going from one level to the next of factor A when endincrement is FALSE (default), or multiple by which the last level of factor A is modified with respect to refmean when endincrement is TRUE}
+\item{fAeffect}{Numeric - multiple that defines how cell means are modified by factor A. With the default \code{endincrement} (\code{TRUE}), determines the last level of factor A with respect to its first level. When \code{endincrement=FALSE} this multiple applies from one level to the next.}
 
-\item{fBeffect}{Numeric - multiple by which the refmean is modified when going from one level to the next of factor B when endincrement is FALSE (default), or multiple by which the last level of factor B is modified with respect to refmean when endincrement is TRUE}
+\item{fBeffect}{Numeric - multiple that defines how cell means are modified by factor B. With the default \code{endincrement} (\code{TRUE}), determines the last level of factor B with respect to its first level. When \code{endincrement=FALSE} this multiple applies from one level to the next.}
 
 \item{groupswinteraction}{vector length 2 or n*2 matrix - Combination of levels from factors A and B in which interaction is expected}
 
-\item{interact}{Numeric - value by which the mean from cell or cells indicated in groupswinteraction is multiplied after it has been calculated accordingly to fAeffect and fBeffect}
+\item{interact}{Numeric - value by which the mean from cell or cells indicated in \code{groupswinteraction} is multiplied after it has been calculated accordingly to \code{fAeffect} and \code{fBeffect}}
 
-\item{label_list}{List length 2 - vectors with the names of the factor levels. The objects in this list should be named as the factors. The use of this option is encouraged as these names are inherited to ANOVA_design.}
+\item{label_list}{List length 2 - vectors with the names of the factor levels. The objects in this list should be named as the factors. The use of this option is encouraged as these names are used for plotting and inherited to downstream functions.}
 
-\item{sdproportional}{Logical - whether the standard deviation for each combination of factor levels is a proportion of the respective factor level combination mean, defaults to TRUE}
+\item{sdproportional}{Logical - whether the standard deviation for each combination of factor levels is a proportion of the respective factor level combination mean, defaults to \code{TRUE}}
 
 \item{sdratio}{Numeric - value by which the expected mean value of a factor level combination is multiplied to obtain the respective standard deviation, defaults to 0.2.}
 
-\item{endincrement}{Logical - determines if the multiples provided in fAeffect and fBeffect refer to change between first and last levels (default) or level to level changes.}
+\item{endincrement}{Logical - determines if the multiples provided in \code{fAeffect} and \code{fBeffect} refer to change between first and last levels (default) or level to level changes.}
 
-\item{rho}{Vector length 1 or 2, or 2 by 2 matrix - Controls how the correlation and hence de covariance matrix is built. See details.}
+\item{rho}{Vector length 1 or 2, or 2 by 2 matrix - Controls how the correlation and hence de covariance matrix is built. See 'details' and \code{?gencorrelationmat} examples.}
 
 \item{withinf}{Character - Names the factor with repeated measures. Possible values are NULL, "fA", "fB" or "both"}
 
-\item{plot}{Logical - Should a line plot with the modeled mean and standard deviations be part of the output. Default=TRUE}
+\item{plot}{Logical - Should a line plot with the modeled mean and standard deviations be part of the output. Default is \code{TRUE}}
 }
 \value{
-If rho and whithinf are left at their default values of 0 and NULL, respectively, a list with two objects.
+If \code{rho} and \code{withinf} are left at their default values of 0 and NULL, respectively, a cell mean matrix, a cell standard deviation matrix and
+optionally a graph that represents both.
 
-The first consist of two matrices, one of expected means for each cell of the two-way factorial experiment, one of expected standard deviations for said cells.
-
-If rho is between -1 and 1 but different to 0 and whithinf is either "fA", "fB" or "both", along with the above mentioned output the output will include correlation and covariance matrices.
+If \code{rho} is between -1 and 1 but different to 0 and \code{withinf} is either "fA", "fB" or "both", correlation and covariance matrices are generated
+along with the aforementioned output.
 }
 \description{
-The calculate_mean_matrix will generate a matrix of expected mean values for i\emph{j group combinations of a two-way
-factorial design, as well as a standard deviation matrix for these i}j groups.
-If the design has repeated measures it will additionally provide correlation and covariance matrices calculated
-depending on which factors are 'within' factors in the design.
+This function will generate a matrix of expected mean values for \emph{ab} factor level combinations of a two-way
+factorial design by assuming linear effects with possible departure from linearity by interaction. It will also
+provide a standard deviation matrix for these \emph{ab} combinations of factor levels. If the design has repeated measures,
+it will additionally provide correlation and covariance matrices calculated depending on which factor has repeated
+measurements or is the 'within' factor.
 }
 \details{
 The user must provide a reference mean (usually mean in control or untreated group), the expected change for each factor
-from one level to the next (or from the first to last level) and the number of levels in each factor.
+from first to last level (or from one level to the next) and the number of levels in each factor.
 
-Also, if the user specifies factor level combinations which are expected to present interaction and its
-magnitude with respect to the reference mean, the expected change in the cell means will be incorporated to the
-aforementioned matrices.
+The user can also specify factor level combinations in which interaction is assumed and its magnitude with respect to the
+reference mean. The cell mean matrix will be modified accordingly and this can also have an effect of the standard deviation
+matrix.
 
-We were motivated by sample size calculation for two-way factorial designs with a,b,...,i levels of factor A and
-a,b,...,j levels of factor B in which the mean outcome value for replicates of cell A=a and B=a are known.
+We were motivated by sample size calculation for two-way factorial designs with \emph{1,2,...,a} levels of factor \emph{A} and
+\emph{1,2,...,b} levels of factor \emph{B} in which the mean outcome value for replicates of cell \emph{A=1, B=1} are known.
 Furthermore, there is an expected change in level mean for each of the factors. Finally, interaction can be explicitly
 introduced to level combinations in which it is expected to occur.
 
-If a repeated measures experiment is intended 'withinf' must be set to "fA", "fB" or "both", depending on which is the "within" factor. If 'rho' is a vector length 1, the within subject correlation
-will be constant for the factor defined in 'withinf'. If 'rho' is a vector length 2 and 'withinf' is either "fA" or "fB" a correlation gradient will be created from the first to second value of
-'rho'. If 'rho' is a vector length 2 and 'withinf="both"', the first element of 'rho' will be the correlation within factor A, while the second element will be the correlation within factor B. If
-'rho' is a 2*2 matrix, only possible if 'withinf="both"', a correlation gradient will be created across rows of 'rho' for each of the factors.
+If a repeated measures experiment is intended \code{withinf} must be set to "fA", "fB" or "both", depending on which is the 'within' factor.
+If \code{rho} is a vector length 1, the within subject correlation will be constant for the factor defined in \code{withinf}. If \code{rho} is a vector
+length 2 and \code{withinf} is either "fA" or "fB" a correlation gradient will be created from the first to second value of \code{rho}. If \code{rho} is
+a vector length 2 and \code{withinf="both"}, the first element of \code{rho} will be the correlation within factor A, while the second element will
+be the correlation within factor B. If \code{rho} is a 2*2 matrix, only possible if \code{withinf="both"}, a correlation gradient will be created
+across rows of \code{rho} for each of the factors.
 }
 \examples{
 refmean <- 1
