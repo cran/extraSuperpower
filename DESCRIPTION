@@ -1,6 +1,6 @@
 Package: extraSuperpower
 Title: Power Calculation for Two-Way Factorial Designs
-Version: 1.5.0
+Version: 1.5.2
 Authors@R: c(person(given = "Louis",
                       family = "Macias",
                       role = c("aut", "cre", "cph"),
@@ -27,6 +27,6 @@ License: MIT + file LICENSE
 URL: https://github.com/luisrmacias/extraSuperpower
 BugReports: https://github.com/luisrmacias/extraSuperpower/issues
 NeedsCompilation: no
-Packaged: 2025-07-15 14:59:28 UTC; macias
+Packaged: 2025-07-24 12:31:32 UTC; macias
 Repository: CRAN
-Date/Publication: 2025-07-15 15:20:02 UTC
+Date/Publication: 2025-07-24 13:20:06 UTC
