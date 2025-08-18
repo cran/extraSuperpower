@@ -1,7 +1,7 @@
-0fd7c70187d0fc11b999601751e75e86 *DESCRIPTION
+f07d82557a78ec53910b7a205e4683c3 *DESCRIPTION
 d055292c7d25f477786604218b6f5bc3 *LICENSE
 3f5b498b41ab0c2b7b941f0b4c3d139a *NAMESPACE
-ad528d792149a51a8ca826d555a91259 *NEWS.md
+5df4d9f5ae11cc364b595c21f1be3bfb *NEWS.md
 f96fd6cf9352d0d41b86264290e16104 *R/build_mean_mat.R
 a1c18ac1b79c02acb0ab178c1667bbd5 *R/create_mean_sd_matrices.R
 3928dee23e7237abe62b32beeb84790a *R/data_summary_fplotting.R
@@ -11,7 +11,7 @@ a33c51ea1ffa98170aadbccb4c094e7f *R/exact_twoway_anova_power.R
 2cce7a0c9f5a5f7e653db9812e787e78 *R/gencovmat.R
 b411bd8bd6e2646ece7124d06bb2b195 *R/genvecs.R
 36b48a4e18498b1a0d4c95062e2a95a1 *R/graph_modelled_means_sd.R
-fdcdf245b2dfc4e003eb21a6d6eff79e *R/independent_twoway_generation.R
+e00438691ab548788fb088eea3521dfc *R/independent_twoway_generation.R
 13decbfcba8186328de8d735de273c3a *R/plot_powercurves.R
 ef72b59c0b82a76f22c9c154122d04f6 *R/repeated_twoway_generation.R
 f875162f3f420c3602863c795e0d90bf *R/simulate_over_groupsize.R
@@ -21,7 +21,7 @@ f875162f3f420c3602863c795e0d90bf *R/simulate_over_groupsize.R
 54ebc697c39c91b2a633de73d10ade62 *build/vignette.rds
 a80a1594681e49a112d36e6b7ebb1e66 *inst/doc/eSp_balanced_design_powertest.R
 a844427b48df7b5abdc0009c23f54810 *inst/doc/eSp_balanced_design_powertest.Rmd
-dac068a50dd8173126838b8fd57df5ce *inst/doc/eSp_balanced_design_powertest.html
+d08bff674b30869f24e8edf95696bab6 *inst/doc/eSp_balanced_design_powertest.html
 113ede296d4cf92679fd72f90406341a *man/calculate_mean_matrix.Rd
 ddb11dc629068b3e8ab082c943d30232 *man/effsize.Rd
 f1dc86207af80f88b93fed0e0cfd43fc *man/exact_twoway_anova_power.Rd

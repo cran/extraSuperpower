@@ -1,3 +1,7 @@
+# extraSuperpower 1.5.3
+
+* Corrected independent sample truncated distribution simulation
+
 # extraSuperpower 1.5.2
 
 # extraSuperpower 1.5.1
