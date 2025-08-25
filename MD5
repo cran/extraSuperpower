@@ -1,9 +1,9 @@
-f07d82557a78ec53910b7a205e4683c3 *DESCRIPTION
+1c5a27f88c97f4640d8810f20e1047a8 *DESCRIPTION
 d055292c7d25f477786604218b6f5bc3 *LICENSE
-3f5b498b41ab0c2b7b941f0b4c3d139a *NAMESPACE
-5df4d9f5ae11cc364b595c21f1be3bfb *NEWS.md
+6f50a0670c2e4435cc20cc7ffc5032f3 *NAMESPACE
+6e3ac9acbbb44d482ede78ef94c8acad *NEWS.md
 f96fd6cf9352d0d41b86264290e16104 *R/build_mean_mat.R
-a1c18ac1b79c02acb0ab178c1667bbd5 *R/create_mean_sd_matrices.R
+ac4b9efa847df155b4ec846af123dffa *R/create_mean_sd_matrices.R
 3928dee23e7237abe62b32beeb84790a *R/data_summary_fplotting.R
 7dc0b89f51862d3d2066ae31ba80a468 *R/effect_size_calculation.R
 a33c51ea1ffa98170aadbccb4c094e7f *R/exact_twoway_anova_power.R
@@ -16,13 +16,13 @@ e00438691ab548788fb088eea3521dfc *R/independent_twoway_generation.R
 ef72b59c0b82a76f22c9c154122d04f6 *R/repeated_twoway_generation.R
 f875162f3f420c3602863c795e0d90bf *R/simulate_over_groupsize.R
 8f07af984f31cfeba176f1c1224fb1d0 *R/test_overseveraln.R
-0b918fee60761edaa36533f5ae0ad296 *R/twoway_simultesting.R
+94bf30d17bda3cd72f8ae766e7d67c95 *R/twoway_simultesting.R
 39a9d30b016174984516f40a2c74f3eb *README.md
 54ebc697c39c91b2a633de73d10ade62 *build/vignette.rds
 a80a1594681e49a112d36e6b7ebb1e66 *inst/doc/eSp_balanced_design_powertest.R
 a844427b48df7b5abdc0009c23f54810 *inst/doc/eSp_balanced_design_powertest.Rmd
-d08bff674b30869f24e8edf95696bab6 *inst/doc/eSp_balanced_design_powertest.html
-113ede296d4cf92679fd72f90406341a *man/calculate_mean_matrix.Rd
+51eb8dcc0e78c718bc872dba5685c670 *inst/doc/eSp_balanced_design_powertest.html
+ffc297944b0268010c2da6fd8dd3d942 *man/calculate_mean_matrix.Rd
 ddb11dc629068b3e8ab082c943d30232 *man/effsize.Rd
 f1dc86207af80f88b93fed0e0cfd43fc *man/exact_twoway_anova_power.Rd
 42792014f5a6230ab05a898c0e8a3459 *man/gencorrelationmat.Rd
@@ -49,5 +49,5 @@ ef6c11706fba01218759366d8534f233 *tests/testthat/test-independent_twoway_generat
 bd22d4bc2f5cb566e47a9f6e7ddf37cf *tests/testthat/test-repeated_twoway_generation.R
 6bc172e0c49d93d1466e13c9268290e4 *tests/testthat/test-simulate_twoway_nrange.R
 dc660ab30897864f9b8cd74423c7a100 *tests/testthat/test-test_power_overkn.R
-dc4a2220cac38f3aedcd7fd8c7cb5220 *tests/testthat/test-twoway_simulation_testing.R
+0702bc10532f919173cc435e310bd91e *tests/testthat/test-twoway_simulation_testing.R
 a844427b48df7b5abdc0009c23f54810 *vignettes/eSp_balanced_design_powertest.Rmd

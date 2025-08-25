@@ -1,6 +1,6 @@
 Package: extraSuperpower
 Title: Power Calculation for Two-Way Factorial Designs
-Version: 1.5.3
+Version: 1.5.4
 Authors@R: c(person(given = "Louis",
                       family = "Macias",
                       role = c("aut", "cre", "cph"),
@@ -19,7 +19,7 @@ Encoding: UTF-8
 RoxygenNote: 7.3.2
 Imports: MASS (>= 7.3.0), afex (>= 1.3.0), rlang, Matrix, rlist,
         ggplot2, plyr, reshape2, scales, ggthemes, fGarch, truncnorm,
-        sn, tmvtnorm, nparLD, permuco, Rfit, methods, stats, utils
+        sn, tmvtnorm, ARTool, permuco, methods, stats, utils
 Suggests: knitr, rmarkdown, testthat (>= 3.0.0), linpk, Superpower
 VignetteBuilder: knitr, rmarkdown
 Config/testthat/edition: 3
@@ -27,6 +27,6 @@ License: MIT + file LICENSE
 URL: https://github.com/luisrmacias/extraSuperpower
 BugReports: https://github.com/luisrmacias/extraSuperpower/issues
 NeedsCompilation: no
-Packaged: 2025-08-18 08:59:19 UTC; macias
+Packaged: 2025-08-21 12:15:16 UTC; macias
 Repository: CRAN
-Date/Publication: 2025-08-18 09:30:02 UTC
+Date/Publication: 2025-08-25 13:50:12 UTC
