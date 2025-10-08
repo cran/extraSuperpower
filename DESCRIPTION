@@ -1,6 +1,6 @@
 Package: extraSuperpower
 Title: Power Calculation for Two-Way Factorial Designs
-Version: 1.5.4
+Version: 1.5.5
 Authors@R: c(person(given = "Louis",
                       family = "Macias",
                       role = c("aut", "cre", "cph"),
@@ -16,7 +16,7 @@ Author: Louis Macias [aut, cre, cph] (ORCID =
 Maintainer: Louis Macias <louis.macias@uni-luebeck.de>
 Description: The basic use of this package is with 3 sequential functions. One to generate expected cell means and standard deviations, along with correlation and covariance matrices in the case of repeated measurements. This is followed by experiment simulation i number of times. Finally, power is calculated from the simulated data. Features that may be considered in the model are interaction, measure correlation and non-normal distributions.
 Encoding: UTF-8
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Imports: MASS (>= 7.3.0), afex (>= 1.3.0), rlang, Matrix, rlist,
         ggplot2, plyr, reshape2, scales, ggthemes, fGarch, truncnorm,
         sn, tmvtnorm, ARTool, permuco, methods, stats, utils
@@ -27,6 +27,6 @@ License: MIT + file LICENSE
 URL: https://github.com/luisrmacias/extraSuperpower
 BugReports: https://github.com/luisrmacias/extraSuperpower/issues
 NeedsCompilation: no
-Packaged: 2025-08-21 12:15:16 UTC; macias
+Packaged: 2025-10-08 12:28:02 UTC; macias
 Repository: CRAN
-Date/Publication: 2025-08-25 13:50:12 UTC
+Date/Publication: 2025-10-08 14:20:02 UTC
