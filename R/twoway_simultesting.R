@@ -95,15 +95,19 @@ twoway_simulation_testing <- function(data, test="ANOVA", alpha=0.05)
       } else if(test=="rank")
       {
         frml <- as.formula("y ~ indep_var1*indep_var2+ Error(subject/indep_var1)")
+        ranked_data <- ARTool::art(frml, data=simulation[[1]])
+        fit <- anova(ranked_data)
+        rowsel <- !duplicated(fit$Term) & !duplicated(fit$Term, fromLast = TRUE)
+        rowsel <- rowsel | grepl(":", fit$Error)
+        fit <- fit[rowsel,]
         pvec <- sapply(simulation, function(i)
                       {
                       ranked_data <- ARTool::art(frml, data=i)
-                      fit <- anova(ranked_data)
+                      fit <- anova(ranked_data)[rowsel,]
                       res <- fit$`Pr(>F)`
                       names(res) <- fit$Term
                       res})
-        ranked_data <- ARTool::art(frml, data=simulation[[1]])
-        fit <- anova(ranked_data)
+
         res <- fit$`Pr(>F)`
         names(res) <- fit$Term
         pvecnames <- names(res)
@@ -137,16 +141,19 @@ twoway_simulation_testing <- function(data, test="ANOVA", alpha=0.05)
       } else if(test=="rank")
       {
         frml <- as.formula("y ~ indep_var1*indep_var2+ Error(subject/indep_var2)")
+        ranked_data <- ARTool::art(frml, data=simulation[[1]])
+        fit <- anova(ranked_data)
+        rowsel <- !duplicated(fit$Term) & !duplicated(fit$Term, fromLast = TRUE)
+        rowsel <- rowsel | grepl(":", fit$Error)
+        fit <- fit[rowsel,]
         pvec <- sapply(simulation, function(i)
         {
           ranked_data <- ARTool::art(frml, data=i)
-          fit <- anova(ranked_data)
+          fit <- anova(ranked_data)[rowsel,]
           res <- fit$`Pr(>F)`
           names(res) <- fit$Term
-          ##res <- res[c(1,3,5)]
+          ##res <- res
           res})
-        ranked_data <- ARTool::art(frml, data=simulation[[1]])
-        fit <- anova(ranked_data)
         res <- fit$`Pr(>F)`
         names(res) <- fit$Term
         ##res <- res[c(1,3,5)]
@@ -166,44 +173,34 @@ twoway_simulation_testing <- function(data, test="ANOVA", alpha=0.05)
     {
       if(test=="ANOVA")
       {
+        message("Performing ANOVA testing on simulated data")
         pvec <- sapply(simulation, function(i)
           suppressMessages(suppressWarnings(afex::aov_ez(id="subject", dv="y", within=c("indep_var1", "indep_var2"), data=i)$anova_table))$`Pr(>F)`)
         pvecnames <- rownames(suppressMessages(afex::aov_ez(id = "subject", dv = "y", within = c("indep_var1", "indep_var2"),  data = simulation[[1]])$anova_table))
-        message("Performing ANOVA testing on simulated data")
       }else if(test=="permutation")
       {
-        ##checkFunction()
-        ##cat(paste('Permutation testing with n=', mean(group_size), 'starts'))
         frml <- as.formula("y ~ indep_var1*indep_var2+ Error(subject/(indep_var1 + indep_var2))")
-        pvec <- sapply(simulation, function(i) permuco::aovperm(frml, data = i)$table$`resampled P(>F)`)
-        pvecnames <- rownames(permuco::aovperm(frml, data = simulation[[1]])$table)
         message("Performing permutation testing on simulated data")
+        pvec <- sapply(simulation, function(i)
+          permuco::aovperm(frml, data = i)$table$`resampled P(>F)`)
+        pvecnames <- rownames(permuco::aovperm(frml, data = simulation[[1]])$table)
+
       } else if(test=="rank")
       {
         frml <- as.formula("y ~ indep_var1*indep_var2+ Error(subject/(indep_var1 + indep_var2))")
+        ranked_data <- ARTool::art(frml, data=simulation[[1]])
+        rankfit <- anova(ranked_data)
+        rowsel <- rankfit$Term==gsub("subject:", "", rankfit$Error) | rankfit$Error=="Within"
+        message("Performing rank testing on simulated data")
         pvec <- sapply(simulation, function(i)
         {
           ranked_data <- ARTool::art(frml, data=i)
-          fit <- anova(ranked_data)
+          fit <- anova(ranked_data)[rowsel,]
           res <- fit$`Pr(>F)`
           names(res) <- fit$Term
           res
         })
-        ranked_data <- ARTool::art(frml, data=simulation[[1]])
-        fit <- anova(ranked_data)
-        res <- fit$`Pr(>F)`
-        names(res) <- fit$Term
-        pvecnames <- names(res)
-        # pvec <- NULL
-        # for (i in seq(simulation))
-        # {
-        #   capture.output(res <- nparLD::ld.f2(y=simulation[[i]]$y, time1 = simulation[[i]]$indep_var1, time2 = simulation[[i]]$indep_var2, subject = simulation[[i]]$subject,
-        #                                          plot.RTE = FALSE, order.warning = FALSE, description = FALSE, show.covariance = FALSE)$ANOVA.test[,3],
-        #                  file = nullfile())
-        #   pvec <- cbind(pvec, res)
-        # }
-        # pvecnames <- c("indep_var1", "indep_var2", "indep_var1:indep_var2" )
-        message("Performing rank testing on simulated data")
+        pvecnames <- rownames(pvec)
       }
     }
     pvecnames <- gsub("indep_var1", indep_vars[1], pvecnames)

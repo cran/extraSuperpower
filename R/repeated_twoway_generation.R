@@ -202,6 +202,7 @@ twoway_simulation_correlated <- function(group_size, matrices_obj, distribution=
         selection <- sim$subject[sim$cond==x] %in% keep[[grep(x, names(keep))]]
         sim[sim$cond==x & selection,]
       })
+      sim <- do.call(rbind, sim)
     } else if(loss=="sequential")
     {
       if(withinf=="fA")
@@ -256,21 +257,34 @@ twoway_simulation_correlated <- function(group_size, matrices_obj, distribution=
         }
       if(withinf=="fA")
       {
-        namesec <- order(sapply(strsplit(levels(tosample$cond), "_"), "[", 2))
-        names(gather) <- levels(tosample$cond)[namesec]
+        f1 <- sapply(strsplit(levels(tosample[,4]), "_"), "[", -1)
+        if(is.matrix(f1))
+        {
+          f1 <- apply(f1, 2, paste, collapse="_")
+        }
+        f2 <- sapply(strsplit(levels(tosample[,5]), "_"), "[", -1)
+        if(is.matrix(f2))
+        {
+          f2 <- apply(f2, 2, paste, collapse="_")
+        }
+        names(gather) <- paste(f1, rep(f2, each=length(f1)), sep="_")
       } else if(withinf=="fB" | withinf=="both")
       {
         names(gather) <- levels(tosample$cond)
       }
-      sim <- lapply(levels(sim$cond), function(x)
+      simsplit <- split(sim, sim$cond)
+    simsplit <- lapply(simsplit, function(x) {
+      keep <- gather[[which(names(gather) %in% x$cond)]]
+      selection <- x$subject %in% keep
+      x[selection, ]
+    })
+    simsplit <- lapply(simsplit, function(x)
       {
-        selection <- sim$subject[sim$cond==x] %in% gather[[which(names(gather) %in% x)]]
-        sim[sim$cond==x & selection,]
+      cbind(x, n=length(unique(x$subject)))
       })
+    sim <- do.call(rbind, simsplit)
     }
-    sim <- do.call(rbind, sim)
     sim$subject <- droplevels(sim$subject)
-    sim$n <- rep(unlist(mapply(rep, t(group_size), t(group_size))), nsims)
   }
   if(balanced & length(group_size)==1)
   {
